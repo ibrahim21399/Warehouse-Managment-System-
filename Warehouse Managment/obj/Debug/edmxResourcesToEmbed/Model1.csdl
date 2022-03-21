@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WarehouseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cus_Requst_Detailes">
+    <Key>
+      <PropertyRef Name="perem_Num" />
+      <PropertyRef Name="Prod_Id" />
+    </Key>
+    <Property Name="perem_Num" Type="Int32" Nullable="false" />
+    <Property Name="War_Id" Type="Int32" />
+    <Property Name="Prod_Id" Type="Int32" Nullable="false" />
+    <Property Name="OQuntity" Type="Int32" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FKj" FromRole="Cus_Requst_Detailes" ToRole="Warehouse" />
+    <NavigationProperty Name="CusPermission" Relationship="Self.FKKkk" FromRole="Cus_Requst_Detailes" ToRole="CusPermission" />
+    <NavigationProperty Name="Product" Relationship="Self.FKPk" FromRole="Cus_Requst_Detailes" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="CusPermission">
+    <Key>
+      <PropertyRef Name="prem_Num" />
+    </Key>
+    <Property Name="prem_Num" Type="Int32" Nullable="false" />
+    <Property Name="Prem_Date" Type="DateTime" Precision="0" />
+    <Property Name="prod_Quntity" Type="Int32" />
+    <Property Name="Cus_Id" Type="Int32" />
+    <NavigationProperty Name="Cus_Requst_Detailes" Relationship="Self.FKKkk" FromRole="CusPermission" ToRole="Cus_Requst_Detailes" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK3" FromRole="CusPermission" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Cus_Id" />
+    </Key>
+    <Property Name="Cus_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cus_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cus_phone" Type="Int32" />
+    <Property Name="cus_Mobile" Type="Int32" />
+    <Property Name="Cus_Fax" Type="Int32" />
+    <Property Name="Cus_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cus_Website" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CusPermissions" Relationship="Self.FK3" FromRole="Customers" ToRole="CusPermission" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="prod_Id" />
+    </Key>
+    <Property Name="prod_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prod_Code" Type="Int32" />
+    <Property Name="prod_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Cus_Requst_Detailes" Relationship="Self.FKPk" FromRole="Product" ToRole="Cus_Requst_Detailes" />
+    <NavigationProperty Name="product_Store" Relationship="Self.FK__product_S__prd_I__123EB7A3" FromRole="Product" ToRole="product_Store" />
+    <NavigationProperty Name="Units" Relationship="Self.FK__Unit__prod_Id__286302EC" FromRole="Product" ToRole="Unit" />
+    <NavigationProperty Name="Sup_Requst_Detailes" Relationship="Self.FKPI" FromRole="Product" ToRole="Sup_Requst_Detailes" />
+  </EntityType>
+  <EntityType Name="product_Store">
+    <Key>
+      <PropertyRef Name="ps_Id" />
+    </Key>
+    <Property Name="ps_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prd_Id" Type="Int32" />
+    <Property Name="War_Id" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__product_S__prd_I__123EB7A3" FromRole="product_Store" ToRole="Product" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FK__product_S__War_I__1332DBDC" FromRole="product_Store" ToRole="Warehouse" />
+  </EntityType>
+  <EntityType Name="Sup_Requst_Detailes">
+    <Key>
+      <PropertyRef Name="perem_Num" />
+      <PropertyRef Name="Prod_Id" />
+    </Key>
+    <Property Name="perem_Num" Type="Int32" Nullable="false" />
+    <Property Name="War_Id" Type="Int32" />
+    <Property Name="Prod_Id" Type="Int32" Nullable="false" />
+    <Property Name="IQuntity" Type="Int32" />
+    <Property Name="Expire" Type="DateTime" Precision="0" />
+    <Property Name="production_Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Product" Relationship="Self.FKPI" FromRole="Sup_Requst_Detailes" ToRole="Product" />
+    <NavigationProperty Name="SupPermission" Relationship="Self.FKKK" FromRole="Sup_Requst_Detailes" ToRole="SupPermission" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FKWI" FromRole="Sup_Requst_Detailes" ToRole="Warehouse" />
+  </EntityType>
+  <EntityType Name="SupPermission">
+    <Key>
+      <PropertyRef Name="prem_Num" />
+    </Key>
+    <Property Name="prem_Num" Type="Int32" Nullable="false" />
+    <Property Name="Prem_Date" Type="DateTime" Precision="0" />
+    <Property Name="Sup_Id" Type="Int32" />
+    <NavigationProperty Name="Sup_Requst_Detailes" Relationship="Self.FKKK" FromRole="SupPermission" ToRole="Sup_Requst_Detailes" />
+    <NavigationProperty Name="supplier" Relationship="Self.FKS" FromRole="SupPermission" ToRole="suppliers" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="Sup_Id" />
+    </Key>
+    <Property Name="Sup_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sup_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sup_phone" Type="Int32" />
+    <Property Name="Sup_Mobile" Type="Int32" />
+    <Property Name="Sup_Fax" Type="Int32" />
+    <Property Name="Sup_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sup_Website" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SupPermissions" Relationship="Self.FKS" FromRole="suppliers" ToRole="SupPermission" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Unit_Id" />
+    </Key>
+    <Property Name="Unit_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prod_Id" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Unit__prod_Id__286302EC" FromRole="Unit" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="Warhouse_Id" />
+    </Key>
+    <Property Name="Warhouse_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Warhouse_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Warhouse_Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Warhouse_Managers" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cus_Requst_Detailes" Relationship="Self.FKj" FromRole="Warehouse" ToRole="Cus_Requst_Detailes" />
+    <NavigationProperty Name="product_Store" Relationship="Self.FK__product_S__War_I__1332DBDC" FromRole="Warehouse" ToRole="product_Store" />
+    <NavigationProperty Name="Sup_Requst_Detailes" Relationship="Self.FKWI" FromRole="Warehouse" ToRole="Sup_Requst_Detailes" />
+  </EntityType>
+  <Association Name="FKj">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+    <End Role="Cus_Requst_Detailes" Type="Self.Cus_Requst_Detailes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Warhouse_Id" />
+      </Principal>
+      <Dependent Role="Cus_Requst_Detailes">
+        <PropertyRef Name="War_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKKkk">
+    <End Role="CusPermission" Type="Self.CusPermission" Multiplicity="1" />
+    <End Role="Cus_Requst_Detailes" Type="Self.Cus_Requst_Detailes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CusPermission">
+        <PropertyRef Name="prem_Num" />
+      </Principal>
+      <Dependent Role="Cus_Requst_Detailes">
+        <PropertyRef Name="perem_Num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPk">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Cus_Requst_Detailes" Type="Self.Cus_Requst_Detailes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="prod_Id" />
+      </Principal>
+      <Dependent Role="Cus_Requst_Detailes">
+        <PropertyRef Name="Prod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="CusPermission" Type="Self.CusPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Cus_Id" />
+      </Principal>
+      <Dependent Role="CusPermission">
+        <PropertyRef Name="Cus_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product_S__prd_I__123EB7A3">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="product_Store" Type="Self.product_Store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="prod_Id" />
+      </Principal>
+      <Dependent Role="product_Store">
+        <PropertyRef Name="prd_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Unit__prod_Id__286302EC">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Unit" Type="Self.Unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="prod_Id" />
+      </Principal>
+      <Dependent Role="Unit">
+        <PropertyRef Name="prod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPI">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Sup_Requst_Detailes" Type="Self.Sup_Requst_Detailes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="prod_Id" />
+      </Principal>
+      <Dependent Role="Sup_Requst_Detailes">
+        <PropertyRef Name="Prod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product_S__War_I__1332DBDC">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+    <End Role="product_Store" Type="Self.product_Store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Warhouse_Id" />
+      </Principal>
+      <Dependent Role="product_Store">
+        <PropertyRef Name="War_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKKK">
+    <End Role="SupPermission" Type="Self.SupPermission" Multiplicity="1" />
+    <End Role="Sup_Requst_Detailes" Type="Self.Sup_Requst_Detailes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupPermission">
+        <PropertyRef Name="prem_Num" />
+      </Principal>
+      <Dependent Role="Sup_Requst_Detailes">
+        <PropertyRef Name="perem_Num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKWI">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+    <End Role="Sup_Requst_Detailes" Type="Self.Sup_Requst_Detailes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Warhouse_Id" />
+      </Principal>
+      <Dependent Role="Sup_Requst_Detailes">
+        <PropertyRef Name="War_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKS">
+    <End Role="suppliers" Type="Self.supplier" Multiplicity="0..1" />
+    <End Role="SupPermission" Type="Self.SupPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="suppliers">
+        <PropertyRef Name="Sup_Id" />
+      </Principal>
+      <Dependent Role="SupPermission">
+        <PropertyRef Name="Sup_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WarehouseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cus_Requst_Detailes" EntityType="Self.Cus_Requst_Detailes" />
+    <EntitySet Name="CusPermissions" EntityType="Self.CusPermission" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="product_Store" EntityType="Self.product_Store" />
+    <EntitySet Name="Sup_Requst_Detailes" EntityType="Self.Sup_Requst_Detailes" />
+    <EntitySet Name="SupPermissions" EntityType="Self.SupPermission" />
+    <EntitySet Name="suppliers" EntityType="Self.supplier" />
+    <EntitySet Name="Units" EntityType="Self.Unit" />
+    <EntitySet Name="Warehouses" EntityType="Self.Warehouse" />
+    <AssociationSet Name="FKj" Association="Self.FKj">
+      <End Role="Warehouse" EntitySet="Warehouses" />
+      <End Role="Cus_Requst_Detailes" EntitySet="Cus_Requst_Detailes" />
+    </AssociationSet>
+    <AssociationSet Name="FKKkk" Association="Self.FKKkk">
+      <End Role="CusPermission" EntitySet="CusPermissions" />
+      <End Role="Cus_Requst_Detailes" EntitySet="Cus_Requst_Detailes" />
+    </AssociationSet>
+    <AssociationSet Name="FKPk" Association="Self.FKPk">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Cus_Requst_Detailes" EntitySet="Cus_Requst_Detailes" />
+    </AssociationSet>
+    <AssociationSet Name="FK3" Association="Self.FK3">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="CusPermission" EntitySet="CusPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product_S__prd_I__123EB7A3" Association="Self.FK__product_S__prd_I__123EB7A3">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="product_Store" EntitySet="product_Store" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Unit__prod_Id__286302EC" Association="Self.FK__Unit__prod_Id__286302EC">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Unit" EntitySet="Units" />
+    </AssociationSet>
+    <AssociationSet Name="FKPI" Association="Self.FKPI">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Sup_Requst_Detailes" EntitySet="Sup_Requst_Detailes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product_S__War_I__1332DBDC" Association="Self.FK__product_S__War_I__1332DBDC">
+      <End Role="Warehouse" EntitySet="Warehouses" />
+      <End Role="product_Store" EntitySet="product_Store" />
+    </AssociationSet>
+    <AssociationSet Name="FKKK" Association="Self.FKKK">
+      <End Role="SupPermission" EntitySet="SupPermissions" />
+      <End Role="Sup_Requst_Detailes" EntitySet="Sup_Requst_Detailes" />
+    </AssociationSet>
+    <AssociationSet Name="FKWI" Association="Self.FKWI">
+      <End Role="Warehouse" EntitySet="Warehouses" />
+      <End Role="Sup_Requst_Detailes" EntitySet="Sup_Requst_Detailes" />
+    </AssociationSet>
+    <AssociationSet Name="FKS" Association="Self.FKS">
+      <End Role="suppliers" EntitySet="suppliers" />
+      <End Role="SupPermission" EntitySet="SupPermissions" />
+    </AssociationSet>
+    <FunctionImport Name="Add_Prodect">
+      <Parameter Name="code" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="unit" Mode="In" Type="String" />
+      <Parameter Name="unit2" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="expired" ReturnType="Collection(WarehouseModel.expired_Result)">
+      <Parameter Name="daysLeft" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="expiredItems" ReturnType="Collection(WarehouseModel.expiredItems_Result)">
+      <Parameter Name="daysLeft" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="itemInWarehouse" ReturnType="Collection(WarehouseModel.itemInWarehouse_Result)">
+      <Parameter Name="prdnsme" Mode="In" Type="String" />
+      <Parameter Name="w_name" Mode="In" Type="String" />
+      <Parameter Name="date1" Mode="In" Type="DateTime" />
+      <Parameter Name="date2" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="productDuration" ReturnType="Collection(WarehouseModel.productDuration_Result)">
+      <Parameter Name="month" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Show_Cus_Permission" ReturnType="Collection(WarehouseModel.Show_Cus_Permission_Result)" />
+    <FunctionImport Name="show_Products" ReturnType="Collection(WarehouseModel.show_Products_Result)" />
+    <FunctionImport Name="show_productsStoresQuentity" ReturnType="Collection(WarehouseModel.show_productsStoresQuentity_Result)" />
+    <FunctionImport Name="Show_Sup_Permission" ReturnType="Collection(WarehouseModel.Show_Sup_Permission_Result)" />
+    <FunctionImport Name="WarehouseDetails" ReturnType="Collection(WarehouseModel.WarehouseDetails_Result)">
+      <Parameter Name="w_name" Mode="In" Type="String" />
+      <Parameter Name="date1" Mode="In" Type="DateTime" />
+      <Parameter Name="date2" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="product_Movement" EntityType="WarehouseModel.product_Movement" />
+  </EntityContainer>
+  <ComplexType Name="expired_Result">
+    <Property Type="Int32" Name="Code" Nullable="true" />
+    <Property Type="String" Name="product" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+    <Property Type="DateTime" Name="Expire_Date" Nullable="true" />
+    <Property Type="Int32" Name="Expiry" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="expiredItems_Result">
+    <Property Type="Int32" Name="Code" Nullable="true" />
+    <Property Type="String" Name="Item_Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+    <Property Type="DateTime" Name="Expire_Date" Nullable="true" />
+    <Property Type="Int32" Name="Expiry" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="itemInWarehouse_Result">
+    <Property Type="String" Name="Warehouse_Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Product_Name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="productDuration_Result">
+    <Property Type="Int32" Name="Code" Nullable="true" />
+    <Property Type="String" Name="product" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+    <Property Type="DateTime" Name="Expire_Date" Nullable="true" />
+    <Property Type="Int32" Name="Number_of_Months_in_warehouse" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Show_Cus_Permission_Result">
+    <Property Type="Int32" Name="PermissionNo" Nullable="false" />
+    <Property Type="String" Name="Customer" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StoreName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ProductCode" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Quntity" Nullable="true" />
+    <Property Type="DateTime" Name="PermissionDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="show_Products_Result">
+    <Property Type="Int32" Name="prod_Id" Nullable="false" />
+    <Property Type="Int32" Name="Prod_Code" Nullable="true" />
+    <Property Type="String" Name="prod_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Units" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="show_productsStoresQuentity_Result">
+    <Property Type="String" Name="product" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+    <Property Type="String" Name="WarhouseName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Supplier" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="production_Date" Nullable="true" />
+    <Property Type="DateTime" Name="Expire" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Show_Sup_Permission_Result">
+    <Property Type="Int32" Name="PermissionNo" Nullable="false" />
+    <Property Type="String" Name="Supplier" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StoreName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ProductCode" Nullable="true" />
+    <Property Type="String" Name="ProductName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Quntity" Nullable="true" />
+    <Property Type="DateTime" Name="ProductionDate" Nullable="true" />
+    <Property Type="DateTime" Name="Expire" Nullable="true" />
+    <Property Type="DateTime" Name="PermissionDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="WarehouseDetails_Result">
+    <Property Type="String" Name="Warehouse_Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Product_Name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="product_Movement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Warhouse_from" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Warhouse_To" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="productname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="transferQuntity" Type="Int32" />
+    <Property Name="supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="productiondate" Type="DateTime" Precision="0" />
+    <Property Name="dateoftransfer" Type="DateTime" Precision="0" />
+  </EntityType>
+</Schema>

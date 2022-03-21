@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="98c9b290b7da42d68bd40068a8131697" Name="Diagram1" ZoomLevel="54">
+        <EntityTypeShape EntityType="WarehouseModel.Cus_Requst_Detailes" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.CusPermission" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Customer" Width="1.5" PointX="1.5" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Product" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.product_Store" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Sup_Requst_Detailes" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.SupPermission" Width="1.5" PointX="3.75" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.supplier" Width="1.5" PointX="1.5" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Unit" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Warehouse" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="WarehouseModel.FKj" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FKKkk" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FKPk" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK3" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK__product_S__prd_I__123EB7A3" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK__Unit__prod_Id__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FKPI" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK__product_S__War_I__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FKKK" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FKWI" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FKS" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WarehouseModel.product_Movement" Width="4.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

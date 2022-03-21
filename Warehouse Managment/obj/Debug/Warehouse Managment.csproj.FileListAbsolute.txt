@@ -1,0 +1,46 @@
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\bin\Debug\Warehouse Managment.exe.config
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\bin\Debug\Warehouse Managment.exe
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\bin\Debug\Warehouse Managment.pdb
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse Managment.csprojAssemblyReference.cache
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse_Managment.Properties.Resources.resources
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse Managment.csproj.GenerateResource.cache
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse Managment.csproj.CoreCompileInputs.cache
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse Managment.exe
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse Managment.pdb
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse_Managment.Products.AddProducts.resources
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse_Managment.Ware.resources
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\bin\Debug\EntityFramework.dll
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\bin\Debug\EntityFramework.xml
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse Managment.csproj.CopyComplete
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse_Managment.Products.ProductList.resources
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse_Managment.Warehousess.AddWarehouse.resources
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse_Managment.Warehousess.ListWarehouses.resources
+C:\Users\ibrah\source\repos\Warehouse Managment\Warehouse Managment\obj\Debug\Warehouse_Managment.Products.EditProducts.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse Managment.csprojAssemblyReference.cache
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Ware.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Products.AddProducts.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Products.ProductList.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Properties.Resources.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Warehousess.AddWarehouse.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Warehousess.ListWarehouses.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse Managment.csproj.GenerateResource.cache
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse Managment.csproj.CoreCompileInputs.cache
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse Managment.exe
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse Managment.pdb
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\bin\Debug\Warehouse Managment.exe.config
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\bin\Debug\Warehouse Managment.exe
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\bin\Debug\Warehouse Managment.pdb
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\bin\Debug\EntityFramework.dll
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\bin\Debug\EntityFramework.xml
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse Managment.csproj.CopyComplete
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Suppliers.AddSupplier.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Suppliers.ListSuppliers.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Customers.AddCustomer.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Customers.ListCustomers.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Permissions.SupplyPermission.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Permissions.OutPer.resources
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Permissions.transfer.resources
