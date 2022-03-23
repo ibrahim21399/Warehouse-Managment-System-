@@ -43,6 +43,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="product_Movement">
+      <EntityTypeMapping TypeName="WarehouseModel.product_Movement">
+        <MappingFragment StoreEntitySet="product_Movement">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Warhouse_from" ColumnName="Warhouse_from" />
+          <ScalarProperty Name="Warhouse_To" ColumnName="Warhouse_To" />
+          <ScalarProperty Name="productname" ColumnName="productname" />
+          <ScalarProperty Name="transferQuntity" ColumnName="transferQuntity" />
+          <ScalarProperty Name="supplier" ColumnName="supplier" />
+          <ScalarProperty Name="productiondate" ColumnName="productiondate" />
+          <ScalarProperty Name="dateoftransfer" ColumnName="dateoftransfer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="product_Store">
       <EntityTypeMapping TypeName="WarehouseModel.product_Store">
         <MappingFragment StoreEntitySet="product_Store">
@@ -152,6 +166,19 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="productsMove" FunctionName="WarehouseModel.Store.productsMove">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WarehouseModel.productsMove_Result">
+          <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="person" ColumnName="person" />
+          <ScalarProperty Name="Permission_Date" ColumnName="Permission Date" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="TO" ColumnName="TO" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Show_Cus_Permission" FunctionName="WarehouseModel.Store.Show_Cus_Permission">
       <ResultMapping>
         <ComplexTypeMapping TypeName="WarehouseModel.Show_Cus_Permission_Result">
@@ -214,19 +241,17 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="product_Movement">
-      <EntityTypeMapping TypeName="WarehouseModel.product_Movement">
-        <MappingFragment StoreEntitySet="product_Movement">
-          <ScalarProperty Name="dateoftransfer" ColumnName="dateoftransfer" />
-          <ScalarProperty Name="productiondate" ColumnName="productiondate" />
-          <ScalarProperty Name="supplier" ColumnName="supplier" />
-          <ScalarProperty Name="transferQuntity" ColumnName="transferQuntity" />
-          <ScalarProperty Name="productname" ColumnName="productname" />
-          <ScalarProperty Name="Warhouse_To" ColumnName="Warhouse_To" />
-          <ScalarProperty Name="Warhouse_from" ColumnName="Warhouse_from" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="productWarehouse" FunctionName="WarehouseModel.Store.productWarehouse">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WarehouseModel.productWarehouse_Result">
+          <ScalarProperty Name="Warehouse_Name" ColumnName="Warehouse Name" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="person" ColumnName="person" />
+          <ScalarProperty Name="Permission_Date" ColumnName="Permission Date" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

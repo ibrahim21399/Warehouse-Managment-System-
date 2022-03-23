@@ -49,6 +49,19 @@
     <NavigationProperty Name="Units" Relationship="Self.FK__Unit__prod_Id__286302EC" FromRole="Product" ToRole="Unit" />
     <NavigationProperty Name="Sup_Requst_Detailes" Relationship="Self.FKPI" FromRole="Product" ToRole="Sup_Requst_Detailes" />
   </EntityType>
+  <EntityType Name="product_Movement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Warhouse_from" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Warhouse_To" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="productname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="transferQuntity" Type="Int32" />
+    <Property Name="supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="productiondate" Type="DateTime" Precision="0" />
+    <Property Name="dateoftransfer" Type="DateTime" Precision="0" />
+  </EntityType>
   <EntityType Name="product_Store">
     <Key>
       <PropertyRef Name="ps_Id" />
@@ -256,6 +269,7 @@
     <EntitySet Name="CusPermissions" EntityType="Self.CusPermission" />
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="product_Movement" EntityType="Self.product_Movement" />
     <EntitySet Name="product_Store" EntityType="Self.product_Store" />
     <EntitySet Name="Sup_Requst_Detailes" EntityType="Self.Sup_Requst_Detailes" />
     <EntitySet Name="SupPermissions" EntityType="Self.SupPermission" />
@@ -324,8 +338,9 @@
       <Parameter Name="date1" Mode="In" Type="DateTime" />
       <Parameter Name="date2" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="productDuration" ReturnType="Collection(WarehouseModel.productDuration_Result)">
-      <Parameter Name="month" Mode="In" Type="Int32" />
+    <FunctionImport Name="productDuration" ReturnType="Collection(WarehouseModel.productDuration_Result)" />
+    <FunctionImport Name="productsMove" ReturnType="Collection(WarehouseModel.productsMove_Result)">
+      <Parameter Name="warid" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Show_Cus_Permission" ReturnType="Collection(WarehouseModel.Show_Cus_Permission_Result)" />
     <FunctionImport Name="show_Products" ReturnType="Collection(WarehouseModel.show_Products_Result)" />
@@ -336,7 +351,12 @@
       <Parameter Name="date1" Mode="In" Type="DateTime" />
       <Parameter Name="date2" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <EntitySet Name="product_Movement" EntityType="WarehouseModel.product_Movement" />
+    <FunctionImport Name="productWarehouse" ReturnType="Collection(WarehouseModel.productWarehouse_Result)">
+      <Parameter Name="prdnsme" Mode="In" Type="String" />
+      <Parameter Name="w_name" Mode="In" Type="String" />
+      <Parameter Name="date1" Mode="In" Type="DateTime" />
+      <Parameter Name="date2" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="expired_Result">
     <Property Type="Int32" Name="Code" Nullable="true" />
@@ -366,6 +386,15 @@
     <Property Type="DateTime" Name="Production_Date" Nullable="true" />
     <Property Type="DateTime" Name="Expire_Date" Nullable="true" />
     <Property Type="Int32" Name="Number_of_Months_in_warehouse" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="productsMove_Result">
+    <Property Type="String" Name="Product_Name" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
+    <Property Type="String" Name="From" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
   </ComplexType>
   <ComplexType Name="Show_Cus_Permission_Result">
     <Property Type="Int32" Name="PermissionNo" Nullable="false" />
@@ -409,17 +438,12 @@
     <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
     <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
   </ComplexType>
-  <EntityType Name="product_Movement">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="Warhouse_from" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Warhouse_To" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="productname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="transferQuntity" Type="Int32" />
-    <Property Name="supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="productiondate" Type="DateTime" Precision="0" />
-    <Property Name="dateoftransfer" Type="DateTime" Precision="0" />
-  </EntityType>
+  <ComplexType Name="productWarehouse_Result">
+    <Property Type="String" Name="Warehouse_Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Product_Name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
+  </ComplexType>
 </Schema>

@@ -41,7 +41,8 @@ namespace Warehouse_Managment
 
         private void ReportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form1 f1 = new Form1();
+            f1.Show();
         }
 
         private void SuppliersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -153,6 +154,18 @@ namespace Warehouse_Managment
         private void TransferPermissionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             transfer t = new transfer();
+            t.Show();
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            Form1 f1 = new Form1();
+            f1.Show();
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            SupplyPermission t = new SupplyPermission();
             t.Show();
         }
     }

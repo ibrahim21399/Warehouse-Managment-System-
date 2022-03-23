@@ -265,13 +265,21 @@
           <Parameter Name="date1" Type="date" Mode="In" />
           <Parameter Name="date2" Type="date" Mode="In" />
         </Function>
-        <Function Name="productDuration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="month" Type="int" Mode="In" />
+        <Function Name="productDuration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="productsMove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="warid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="productWarehouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="prdnsme" Type="varchar" Mode="In" />
+          <Parameter Name="w_name" Type="varchar" Mode="In" />
+          <Parameter Name="date1" Type="date" Mode="In" />
+          <Parameter Name="date2" Type="date" Mode="In" />
         </Function>
         <Function Name="Show_Cus_Permission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="show_Products" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="show_productsStoresQuentity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Show_Sup_Permission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="showstoresss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="WarehouseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="w_name" Type="varchar" Mode="In" />
           <Parameter Name="date1" Type="date" Mode="In" />
@@ -386,6 +394,19 @@
           <NavigationProperty Name="product_Store" Relationship="Self.FK__product_S__prd_I__123EB7A3" FromRole="Product" ToRole="product_Store" />
           <NavigationProperty Name="Units" Relationship="Self.FK__Unit__prod_Id__286302EC" FromRole="Product" ToRole="Unit" />
           <NavigationProperty Name="Sup_Requst_Detailes" Relationship="Self.FKPI" FromRole="Product" ToRole="Sup_Requst_Detailes" />
+        </EntityType>
+        <EntityType Name="product_Movement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Warhouse_from" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Warhouse_To" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="productname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="transferQuntity" Type="Int32" />
+          <Property Name="supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="productiondate" Type="DateTime" Precision="0" />
+          <Property Name="dateoftransfer" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="product_Store">
           <Key>
@@ -594,6 +615,7 @@
           <EntitySet Name="CusPermissions" EntityType="Self.CusPermission" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="product_Movement" EntityType="Self.product_Movement" />
           <EntitySet Name="product_Store" EntityType="Self.product_Store" />
           <EntitySet Name="Sup_Requst_Detailes" EntityType="Self.Sup_Requst_Detailes" />
           <EntitySet Name="SupPermissions" EntityType="Self.SupPermission" />
@@ -663,7 +685,9 @@
             <Parameter Name="date2" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="productDuration" ReturnType="Collection(WarehouseModel.productDuration_Result)">
-          <Parameter Name="month" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="productsMove" ReturnType="Collection(WarehouseModel.productsMove_Result)">
+          <Parameter Name="warid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Show_Cus_Permission" ReturnType="Collection(WarehouseModel.Show_Cus_Permission_Result)" />
           <FunctionImport Name="show_Products" ReturnType="Collection(WarehouseModel.show_Products_Result)" />
@@ -674,7 +698,13 @@
             <Parameter Name="date1" Mode="In" Type="DateTime" />
             <Parameter Name="date2" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <EntitySet Name="product_Movement" EntityType="WarehouseModel.product_Movement" />
+          <FunctionImport Name="productWarehouse" ReturnType="Collection(WarehouseModel.productWarehouse_Result)">
+            <Parameter Name="prdnsme" Mode="In" Type="String" />
+            <Parameter Name="w_name" Mode="In" Type="String" />
+            <Parameter Name="date1" Mode="In" Type="DateTime" />
+            <Parameter Name="date2" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="showstoresss" ReturnType="Collection(WarehouseModel.showstoresss_Result)" />
         </EntityContainer>
         <ComplexType Name="expired_Result">
           <Property Type="Int32" Name="Code" Nullable="true" />
@@ -704,6 +734,15 @@
           <Property Type="DateTime" Name="Production_Date" Nullable="true" />
           <Property Type="DateTime" Name="Expire_Date" Nullable="true" />
           <Property Type="Int32" Name="Number_of_Months_in_warehouse" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="productsMove_Result">
+          <Property Type="String" Name="Product_Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
+          <Property Type="String" Name="From" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
         </ComplexType>
         <ComplexType Name="Show_Cus_Permission_Result">
           <Property Type="Int32" Name="PermissionNo" Nullable="false" />
@@ -747,19 +786,20 @@
           <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
           <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
         </ComplexType>
-        <EntityType Name="product_Movement">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="Warhouse_from" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Warhouse_To" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="productname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="transferQuntity" Type="Int32" />
-          <Property Name="supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="productiondate" Type="DateTime" Precision="0" />
-          <Property Name="dateoftransfer" Type="DateTime" Precision="0" />
-        </EntityType>
+        <ComplexType Name="productWarehouse_Result">
+          <Property Type="String" Name="Warehouse_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Product_Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="showstoresss_Result">
+          <Property Type="Int32" Name="Warhouse_Id" Nullable="false" />
+          <Property Type="String" Name="Warhouse_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Warhouse_Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Warhouse_Managers" Nullable="true" MaxLength="200" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -805,6 +845,20 @@
                 <ScalarProperty Name="prod_Id" ColumnName="prod_Id" />
                 <ScalarProperty Name="Prod_Code" ColumnName="Prod_Code" />
                 <ScalarProperty Name="prod_Name" ColumnName="prod_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_Movement">
+            <EntityTypeMapping TypeName="WarehouseModel.product_Movement">
+              <MappingFragment StoreEntitySet="product_Movement">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Warhouse_from" ColumnName="Warhouse_from" />
+                <ScalarProperty Name="Warhouse_To" ColumnName="Warhouse_To" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="transferQuntity" ColumnName="transferQuntity" />
+                <ScalarProperty Name="supplier" ColumnName="supplier" />
+                <ScalarProperty Name="productiondate" ColumnName="productiondate" />
+                <ScalarProperty Name="dateoftransfer" ColumnName="dateoftransfer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -917,6 +971,19 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="productsMove" FunctionName="WarehouseModel.Store.productsMove">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WarehouseModel.productsMove_Result">
+                <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="person" ColumnName="person" />
+                <ScalarProperty Name="Permission_Date" ColumnName="Permission Date" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="TO" ColumnName="TO" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Show_Cus_Permission" FunctionName="WarehouseModel.Store.Show_Cus_Permission">
             <ResultMapping>
               <ComplexTypeMapping TypeName="WarehouseModel.Show_Cus_Permission_Result">
@@ -979,20 +1046,28 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="product_Movement">
-            <EntityTypeMapping TypeName="WarehouseModel.product_Movement">
-              <MappingFragment StoreEntitySet="product_Movement">
-                <ScalarProperty Name="dateoftransfer" ColumnName="dateoftransfer" />
-                <ScalarProperty Name="productiondate" ColumnName="productiondate" />
-                <ScalarProperty Name="supplier" ColumnName="supplier" />
-                <ScalarProperty Name="transferQuntity" ColumnName="transferQuntity" />
-                <ScalarProperty Name="productname" ColumnName="productname" />
-                <ScalarProperty Name="Warhouse_To" ColumnName="Warhouse_To" />
-                <ScalarProperty Name="Warhouse_from" ColumnName="Warhouse_from" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="productWarehouse" FunctionName="WarehouseModel.Store.productWarehouse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WarehouseModel.productWarehouse_Result">
+                <ScalarProperty Name="Warehouse_Name" ColumnName="Warehouse Name" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="person" ColumnName="person" />
+                <ScalarProperty Name="Permission_Date" ColumnName="Permission Date" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="showstoresss" FunctionName="WarehouseModel.Store.showstoresss">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WarehouseModel.showstoresss_Result">
+                <ScalarProperty Name="Warhouse_Id" ColumnName="Warhouse_Id" />
+                <ScalarProperty Name="Warhouse_Name" ColumnName="Warhouse_Name" />
+                <ScalarProperty Name="Warhouse_Address" ColumnName="Warhouse_Address" />
+                <ScalarProperty Name="Warhouse_Managers" ColumnName="Warhouse_Managers" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

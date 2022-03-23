@@ -4,11 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="98c9b290b7da42d68bd40068a8131697" Name="Diagram1" ZoomLevel="54">
+      <Diagram DiagramId="87304d2171aa4092997dcfc21fe4cec8" Name="Diagram1">
         <EntityTypeShape EntityType="WarehouseModel.Cus_Requst_Detailes" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="WarehouseModel.CusPermission" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="WarehouseModel.Customer" Width="1.5" PointX="1.5" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WarehouseModel.Product" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.product_Movement" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WarehouseModel.product_Store" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="WarehouseModel.Sup_Requst_Detailes" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="WarehouseModel.SupPermission" Width="1.5" PointX="3.75" PointY="23.125" IsExpanded="true" />
@@ -26,7 +27,6 @@
         <AssociationConnector Association="WarehouseModel.FKKK" ManuallyRouted="false" />
         <AssociationConnector Association="WarehouseModel.FKWI" ManuallyRouted="false" />
         <AssociationConnector Association="WarehouseModel.FKS" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="WarehouseModel.product_Movement" Width="4.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

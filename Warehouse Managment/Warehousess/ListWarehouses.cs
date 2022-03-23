@@ -19,6 +19,7 @@ namespace Warehouse_Managment.Warehousess
         {
             InitializeComponent();
             dataGridView1.DataSource = db.Warehouses.ToList();
+            
 
         }
 

@@ -77,11 +77,7 @@ namespace Warehouse_Managment.Permissions
             dataGridView1.DataSource = db.Show_Sup_Permission().ToList();
 
         }
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-            TextWasChanged = true;
-            counter++;
-        }
+
 
         private void Button1_Click(object sender, EventArgs e)
         {

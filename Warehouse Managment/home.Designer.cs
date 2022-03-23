@@ -48,6 +48,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.supplyPermissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.withdrawPermissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transferPermissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -62,7 +63,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.X = new System.Windows.Forms.Label();
-            this.transferPermissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -264,9 +264,17 @@
             // 
             this.withdrawPermissionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("withdrawPermissionToolStripMenuItem.Image")));
             this.withdrawPermissionToolStripMenuItem.Name = "withdrawPermissionToolStripMenuItem";
-            this.withdrawPermissionToolStripMenuItem.Size = new System.Drawing.Size(343, 36);
-            this.withdrawPermissionToolStripMenuItem.Text = "Withdraw Permission";
+            this.withdrawPermissionToolStripMenuItem.Size = new System.Drawing.Size(326, 36);
+            this.withdrawPermissionToolStripMenuItem.Text = "Selling Permission";
             this.withdrawPermissionToolStripMenuItem.Click += new System.EventHandler(this.WithdrawPermissionToolStripMenuItem_Click);
+            // 
+            // transferPermissionToolStripMenuItem
+            // 
+            this.transferPermissionToolStripMenuItem.Image = global::Warehouse_Managment.Properties.Resources.Circle_icons_dolly_svg;
+            this.transferPermissionToolStripMenuItem.Name = "transferPermissionToolStripMenuItem";
+            this.transferPermissionToolStripMenuItem.Size = new System.Drawing.Size(326, 36);
+            this.transferPermissionToolStripMenuItem.Text = "Transfer Permission";
+            this.transferPermissionToolStripMenuItem.Click += new System.EventHandler(this.TransferPermissionToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -353,7 +361,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(731, 459);
+            this.label4.Location = new System.Drawing.Point(722, 459);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(186, 37);
             this.label4.TabIndex = 12;
@@ -371,6 +379,7 @@
             this.button4.Size = new System.Drawing.Size(161, 133);
             this.button4.TabIndex = 11;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // label5
             // 
@@ -396,6 +405,7 @@
             this.button5.Size = new System.Drawing.Size(161, 133);
             this.button5.TabIndex = 9;
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // label6
             // 
@@ -444,14 +454,6 @@
             this.X.TabIndex = 14;
             this.X.Text = "X";
             this.X.Click += new System.EventHandler(this.X_Click);
-            // 
-            // transferPermissionToolStripMenuItem
-            // 
-            this.transferPermissionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("transferPermissionToolStripMenuItem.Image")));
-            this.transferPermissionToolStripMenuItem.Name = "transferPermissionToolStripMenuItem";
-            this.transferPermissionToolStripMenuItem.Size = new System.Drawing.Size(343, 36);
-            this.transferPermissionToolStripMenuItem.Text = "Transfer Permission";
-            this.transferPermissionToolStripMenuItem.Click += new System.EventHandler(this.TransferPermissionToolStripMenuItem_Click);
             // 
             // Ware
             // 

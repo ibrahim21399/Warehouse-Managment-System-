@@ -31,13 +31,13 @@ namespace Warehouse_Managment
         public virtual DbSet<CusPermission> CusPermissions { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<product_Movement> product_Movement { get; set; }
         public virtual DbSet<product_Store> product_Store { get; set; }
         public virtual DbSet<Sup_Requst_Detailes> Sup_Requst_Detailes { get; set; }
         public virtual DbSet<SupPermission> SupPermissions { get; set; }
         public virtual DbSet<supplier> suppliers { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<Warehouse> Warehouses { get; set; }
-        public virtual DbSet<product_Movement> product_Movement { get; set; }
     
         public virtual int Add_Prodect(Nullable<int> code, string name, string unit, string unit2)
         {
@@ -99,13 +99,18 @@ namespace Warehouse_Managment
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<itemInWarehouse_Result>("itemInWarehouse", prdnsmeParameter, w_nameParameter, date1Parameter, date2Parameter);
         }
     
-        public virtual ObjectResult<productDuration_Result> productDuration(Nullable<int> month)
+        public virtual ObjectResult<productDuration_Result> productDuration()
         {
-            var monthParameter = month.HasValue ?
-                new ObjectParameter("month", month) :
-                new ObjectParameter("month", typeof(int));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productDuration_Result>("productDuration");
+        }
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productDuration_Result>("productDuration", monthParameter);
+        public virtual ObjectResult<productsMove_Result> productsMove(Nullable<int> warid)
+        {
+            var waridParameter = warid.HasValue ?
+                new ObjectParameter("warid", warid) :
+                new ObjectParameter("warid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productsMove_Result>("productsMove", waridParameter);
         }
     
         public virtual ObjectResult<Show_Cus_Permission_Result> Show_Cus_Permission()
@@ -143,6 +148,32 @@ namespace Warehouse_Managment
                 new ObjectParameter("date2", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WarehouseDetails_Result>("WarehouseDetails", w_nameParameter, date1Parameter, date2Parameter);
+        }
+    
+        public virtual ObjectResult<productWarehouse_Result> productWarehouse(string prdnsme, string w_name, Nullable<System.DateTime> date1, Nullable<System.DateTime> date2)
+        {
+            var prdnsmeParameter = prdnsme != null ?
+                new ObjectParameter("prdnsme", prdnsme) :
+                new ObjectParameter("prdnsme", typeof(string));
+    
+            var w_nameParameter = w_name != null ?
+                new ObjectParameter("w_name", w_name) :
+                new ObjectParameter("w_name", typeof(string));
+    
+            var date1Parameter = date1.HasValue ?
+                new ObjectParameter("date1", date1) :
+                new ObjectParameter("date1", typeof(System.DateTime));
+    
+            var date2Parameter = date2.HasValue ?
+                new ObjectParameter("date2", date2) :
+                new ObjectParameter("date2", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productWarehouse_Result>("productWarehouse", prdnsmeParameter, w_nameParameter, date1Parameter, date2Parameter);
+        }
+    
+        public virtual ObjectResult<showstoresss_Result> showstoresss()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<showstoresss_Result>("showstoresss");
         }
     }
 }
