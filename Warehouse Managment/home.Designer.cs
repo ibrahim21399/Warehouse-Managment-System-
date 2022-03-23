@@ -63,6 +63,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.X = new System.Windows.Forms.Label();
+            this.warhouseProductsQuntityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,7 +114,8 @@
             // 
             this.warehousesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addWarehouseToolStripMenuItem,
-            this.editWarehouseToolStripMenuItem});
+            this.editWarehouseToolStripMenuItem,
+            this.warhouseProductsQuntityToolStripMenuItem});
             this.warehousesToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.warehousesToolStripMenuItem.Image = global::Warehouse_Managment.Properties.Resources.warehouse;
             this.warehousesToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -455,6 +457,14 @@
             this.X.Text = "X";
             this.X.Click += new System.EventHandler(this.X_Click);
             // 
+            // warhouseProductsQuntityToolStripMenuItem
+            // 
+            this.warhouseProductsQuntityToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("warhouseProductsQuntityToolStripMenuItem.Image")));
+            this.warhouseProductsQuntityToolStripMenuItem.Name = "warhouseProductsQuntityToolStripMenuItem";
+            this.warhouseProductsQuntityToolStripMenuItem.Size = new System.Drawing.Size(304, 36);
+            this.warhouseProductsQuntityToolStripMenuItem.Text = " Products Quntity";
+            this.warhouseProductsQuntityToolStripMenuItem.Click += new System.EventHandler(this.WarhouseProductsQuntityToolStripMenuItem_Click);
+            // 
             // Ware
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -526,6 +536,7 @@
         private System.Windows.Forms.ToolStripMenuItem supplyPermissionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem withdrawPermissionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transferPermissionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem warhouseProductsQuntityToolStripMenuItem;
     }
 }
 

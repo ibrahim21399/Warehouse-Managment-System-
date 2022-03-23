@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="WarehouseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="WarehouseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cus_Requst_Detailes">
           <Key>
             <PropertyRef Name="perem_Num" />
@@ -266,6 +266,9 @@
           <Parameter Name="date2" Type="date" Mode="In" />
         </Function>
         <Function Name="productDuration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="productMovement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="w_name" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="productsMove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="warid" Type="int" Mode="In" />
         </Function>
@@ -279,6 +282,10 @@
         <Function Name="show_Products" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="show_productsStoresQuentity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Show_Sup_Permission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="showstoreproductsAvaliablequantity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ware" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="showstoreproductsAvaliablequantity2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="showstoresss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="WarehouseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="w_name" Type="varchar" Mode="In" />
@@ -342,7 +349,8 @@
             <End Role="Sup_Requst_Detailes" EntitySet="Sup_Requst_Detailes" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WarehouseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -673,10 +681,10 @@
             <Parameter Name="unit2" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="expired" ReturnType="Collection(WarehouseModel.expired_Result)">
-          <Parameter Name="daysLeft" Mode="In" Type="Int32" />
+            <Parameter Name="daysLeft" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="expiredItems" ReturnType="Collection(WarehouseModel.expiredItems_Result)">
-          <Parameter Name="daysLeft" Mode="In" Type="Int32" />
+            <Parameter Name="daysLeft" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="itemInWarehouse" ReturnType="Collection(WarehouseModel.itemInWarehouse_Result)">
             <Parameter Name="prdnsme" Mode="In" Type="String" />
@@ -684,19 +692,12 @@
             <Parameter Name="date1" Mode="In" Type="DateTime" />
             <Parameter Name="date2" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="productDuration" ReturnType="Collection(WarehouseModel.productDuration_Result)">
+          <FunctionImport Name="productDuration" ReturnType="Collection(WarehouseModel.productDuration_Result)" />
+          <FunctionImport Name="productMovement" ReturnType="Collection(WarehouseModel.productMovement_Result)">
+            <Parameter Name="w_name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="productsMove" ReturnType="Collection(WarehouseModel.productsMove_Result)">
-          <Parameter Name="warid" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Show_Cus_Permission" ReturnType="Collection(WarehouseModel.Show_Cus_Permission_Result)" />
-          <FunctionImport Name="show_Products" ReturnType="Collection(WarehouseModel.show_Products_Result)" />
-          <FunctionImport Name="show_productsStoresQuentity" ReturnType="Collection(WarehouseModel.show_productsStoresQuentity_Result)" />
-          <FunctionImport Name="Show_Sup_Permission" ReturnType="Collection(WarehouseModel.Show_Sup_Permission_Result)" />
-          <FunctionImport Name="WarehouseDetails" ReturnType="Collection(WarehouseModel.WarehouseDetails_Result)">
-            <Parameter Name="w_name" Mode="In" Type="String" />
-            <Parameter Name="date1" Mode="In" Type="DateTime" />
-            <Parameter Name="date2" Mode="In" Type="DateTime" />
+            <Parameter Name="warid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="productWarehouse" ReturnType="Collection(WarehouseModel.productWarehouse_Result)">
             <Parameter Name="prdnsme" Mode="In" Type="String" />
@@ -704,13 +705,26 @@
             <Parameter Name="date1" Mode="In" Type="DateTime" />
             <Parameter Name="date2" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="Show_Cus_Permission" ReturnType="Collection(WarehouseModel.Show_Cus_Permission_Result)" />
+          <FunctionImport Name="show_Products" ReturnType="Collection(WarehouseModel.show_Products_Result)" />
+          <FunctionImport Name="show_productsStoresQuentity" ReturnType="Collection(WarehouseModel.show_productsStoresQuentity_Result)" />
+          <FunctionImport Name="Show_Sup_Permission" ReturnType="Collection(WarehouseModel.Show_Sup_Permission_Result)" />
+          <FunctionImport Name="showstoreproductsAvaliablequantity" ReturnType="Collection(WarehouseModel.showstoreproductsAvaliablequantity_Result)">
+            <Parameter Name="ware" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="showstoreproductsAvaliablequantity2" ReturnType="Collection(WarehouseModel.showstoreproductsAvaliablequantity2_Result)" />
           <FunctionImport Name="showstoresss" ReturnType="Collection(WarehouseModel.showstoresss_Result)" />
+          <FunctionImport Name="WarehouseDetails" ReturnType="Collection(WarehouseModel.WarehouseDetails_Result)">
+            <Parameter Name="w_name" Mode="In" Type="String" />
+            <Parameter Name="date1" Mode="In" Type="DateTime" />
+            <Parameter Name="date2" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="expired_Result">
           <Property Type="Int32" Name="Code" Nullable="true" />
           <Property Type="String" Name="product" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="Production_Date" Nullable="true" />
-          <Property Type="DateTime" Name="Expire_Date" Nullable="true" />
+          <Property Type="DateTime" Name="ProductionDate" Nullable="true" />
+          <Property Type="DateTime" Name="ExpireDate" Nullable="true" />
           <Property Type="Int32" Name="Expiry" Nullable="true" />
         </ComplexType>
         <ComplexType Name="expiredItems_Result">
@@ -731,17 +745,34 @@
         <ComplexType Name="productDuration_Result">
           <Property Type="Int32" Name="Code" Nullable="true" />
           <Property Type="String" Name="product" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="Production_Date" Nullable="true" />
-          <Property Type="DateTime" Name="Expire_Date" Nullable="true" />
-          <Property Type="Int32" Name="Number_of_Months_in_warehouse" Nullable="true" />
+          <Property Type="DateTime" Name="ProductionDate" Nullable="true" />
+          <Property Type="DateTime" Name="ExpireDate" Nullable="true" />
+          <Property Type="Int32" Name="NumberOfDaysInWarehouse" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="productsMove_Result">
-          <Property Type="String" Name="Product_Name" Nullable="true" MaxLength="50" />
+        <ComplexType Name="productMovement_Result">
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Quantity" Nullable="true" />
           <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
+          <Property Type="DateTime" Name="PermissionDate" Nullable="true" />
           <Property Type="String" Name="From" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="TO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="18" />
+        </ComplexType>
+        <ComplexType Name="productsMove_Result">
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="PermissionDate" Nullable="true" />
+          <Property Type="String" Name="From" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TO" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="productWarehouse_Result">
+          <Property Type="String" Name="WarehouseName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="PermissionDate" Nullable="true" />
           <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
         </ComplexType>
         <ComplexType Name="Show_Cus_Permission_Result">
@@ -778,27 +809,35 @@
           <Property Type="DateTime" Name="Expire" Nullable="true" />
           <Property Type="DateTime" Name="PermissionDate" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="WarehouseDetails_Result">
-          <Property Type="String" Name="Warehouse_Name" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Product_Name" Nullable="false" MaxLength="50" />
+        <ComplexType Name="showstoreproductsAvaliablequantity_Result">
+          <Property Type="String" Name="Warhouse_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="product" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Quantity" Nullable="true" />
-          <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
-          <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Supplier" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="production_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Expire" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="productWarehouse_Result">
-          <Property Type="String" Name="Warehouse_Name" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Product_Name" Nullable="false" MaxLength="50" />
+        <ComplexType Name="showstoreproductsAvaliablequantity2_Result">
+          <Property Type="String" Name="Warhouse_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="product" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Quantity" Nullable="true" />
-          <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
-          <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Supplier" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="production_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Expire" Nullable="true" />
         </ComplexType>
         <ComplexType Name="showstoresss_Result">
           <Property Type="Int32" Name="Warhouse_Id" Nullable="false" />
           <Property Type="String" Name="Warhouse_Name" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Warhouse_Address" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="Warhouse_Managers" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="WarehouseDetails_Result">
+          <Property Type="String" Name="WarehouseName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="PermissionDate" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -931,8 +970,8 @@
               <ComplexTypeMapping TypeName="WarehouseModel.expired_Result">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="product" ColumnName="product" />
-                <ScalarProperty Name="Production_Date" ColumnName="Production Date" />
-                <ScalarProperty Name="Expire_Date" ColumnName="Expire Date" />
+                <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
                 <ScalarProperty Name="Expiry" ColumnName="Expiry" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -965,21 +1004,46 @@
               <ComplexTypeMapping TypeName="WarehouseModel.productDuration_Result">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="product" ColumnName="product" />
-                <ScalarProperty Name="Production_Date" ColumnName="Production Date" />
-                <ScalarProperty Name="Expire_Date" ColumnName="Expire Date" />
-                <ScalarProperty Name="Number_of_Months_in_warehouse" ColumnName="Number of Months in warehouse" />
+                <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="NumberOfDaysInWarehouse" ColumnName="NumberOfDaysInWarehouse" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="productMovement" FunctionName="WarehouseModel.Store.productMovement">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WarehouseModel.productMovement_Result">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="person" ColumnName="person" />
+                <ScalarProperty Name="PermissionDate" ColumnName="PermissionDate" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="TO" ColumnName="TO" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="productsMove" FunctionName="WarehouseModel.Store.productsMove">
             <ResultMapping>
               <ComplexTypeMapping TypeName="WarehouseModel.productsMove_Result">
-                <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="person" ColumnName="person" />
-                <ScalarProperty Name="Permission_Date" ColumnName="Permission Date" />
+                <ScalarProperty Name="PermissionDate" ColumnName="PermissionDate" />
                 <ScalarProperty Name="From" ColumnName="From" />
                 <ScalarProperty Name="TO" ColumnName="TO" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="productWarehouse" FunctionName="WarehouseModel.Store.productWarehouse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WarehouseModel.productWarehouse_Result">
+                <ScalarProperty Name="WarehouseName" ColumnName="WarehouseName" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="person" ColumnName="person" />
+                <ScalarProperty Name="PermissionDate" ColumnName="PermissionDate" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -1034,27 +1098,27 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="WarehouseDetails" FunctionName="WarehouseModel.Store.WarehouseDetails">
+          <FunctionImportMapping FunctionImportName="showstoreproductsAvaliablequantity" FunctionName="WarehouseModel.Store.showstoreproductsAvaliablequantity">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="WarehouseModel.WarehouseDetails_Result">
-                <ScalarProperty Name="Warehouse_Name" ColumnName="Warehouse Name" />
-                <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+              <ComplexTypeMapping TypeName="WarehouseModel.showstoreproductsAvaliablequantity_Result">
+                <ScalarProperty Name="Warhouse_Name" ColumnName="Warhouse_Name" />
+                <ScalarProperty Name="product" ColumnName="product" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="person" ColumnName="person" />
-                <ScalarProperty Name="Permission_Date" ColumnName="Permission Date" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="production_Date" ColumnName="production_Date" />
+                <ScalarProperty Name="Expire" ColumnName="Expire" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="productWarehouse" FunctionName="WarehouseModel.Store.productWarehouse">
+          <FunctionImportMapping FunctionImportName="showstoreproductsAvaliablequantity2" FunctionName="WarehouseModel.Store.showstoreproductsAvaliablequantity2">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="WarehouseModel.productWarehouse_Result">
-                <ScalarProperty Name="Warehouse_Name" ColumnName="Warehouse Name" />
-                <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+              <ComplexTypeMapping TypeName="WarehouseModel.showstoreproductsAvaliablequantity2_Result">
+                <ScalarProperty Name="Warhouse_Name" ColumnName="Warhouse_Name" />
+                <ScalarProperty Name="product" ColumnName="product" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="person" ColumnName="person" />
-                <ScalarProperty Name="Permission_Date" ColumnName="Permission Date" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="production_Date" ColumnName="production_Date" />
+                <ScalarProperty Name="Expire" ColumnName="Expire" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1065,6 +1129,18 @@
                 <ScalarProperty Name="Warhouse_Name" ColumnName="Warhouse_Name" />
                 <ScalarProperty Name="Warhouse_Address" ColumnName="Warhouse_Address" />
                 <ScalarProperty Name="Warhouse_Managers" ColumnName="Warhouse_Managers" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WarehouseDetails" FunctionName="WarehouseModel.Store.WarehouseDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WarehouseModel.WarehouseDetails_Result">
+                <ScalarProperty Name="WarehouseName" ColumnName="WarehouseName" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="person" ColumnName="person" />
+                <ScalarProperty Name="PermissionDate" ColumnName="PermissionDate" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -126,8 +126,8 @@
         <ComplexTypeMapping TypeName="WarehouseModel.expired_Result">
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="product" ColumnName="product" />
-          <ScalarProperty Name="Production_Date" ColumnName="Production Date" />
-          <ScalarProperty Name="Expire_Date" ColumnName="Expire Date" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
           <ScalarProperty Name="Expiry" ColumnName="Expiry" />
         </ComplexTypeMapping>
       </ResultMapping>
@@ -160,21 +160,46 @@
         <ComplexTypeMapping TypeName="WarehouseModel.productDuration_Result">
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="product" ColumnName="product" />
-          <ScalarProperty Name="Production_Date" ColumnName="Production Date" />
-          <ScalarProperty Name="Expire_Date" ColumnName="Expire Date" />
-          <ScalarProperty Name="Number_of_Months_in_warehouse" ColumnName="Number of Months in warehouse" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+          <ScalarProperty Name="NumberOfDaysInWarehouse" ColumnName="NumberOfDaysInWarehouse" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="productMovement" FunctionName="WarehouseModel.Store.productMovement">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WarehouseModel.productMovement_Result">
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="person" ColumnName="person" />
+          <ScalarProperty Name="PermissionDate" ColumnName="PermissionDate" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="TO" ColumnName="TO" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="productsMove" FunctionName="WarehouseModel.Store.productsMove">
       <ResultMapping>
         <ComplexTypeMapping TypeName="WarehouseModel.productsMove_Result">
-          <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="person" ColumnName="person" />
-          <ScalarProperty Name="Permission_Date" ColumnName="Permission Date" />
+          <ScalarProperty Name="PermissionDate" ColumnName="PermissionDate" />
           <ScalarProperty Name="From" ColumnName="From" />
           <ScalarProperty Name="TO" ColumnName="TO" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="productWarehouse" FunctionName="WarehouseModel.Store.productWarehouse">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WarehouseModel.productWarehouse_Result">
+          <ScalarProperty Name="WarehouseName" ColumnName="WarehouseName" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="person" ColumnName="person" />
+          <ScalarProperty Name="PermissionDate" ColumnName="PermissionDate" />
           <ScalarProperty Name="Type" ColumnName="Type" />
         </ComplexTypeMapping>
       </ResultMapping>
@@ -229,26 +254,48 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="WarehouseDetails" FunctionName="WarehouseModel.Store.WarehouseDetails">
+    <FunctionImportMapping FunctionImportName="showstoreproductsAvaliablequantity" FunctionName="WarehouseModel.Store.showstoreproductsAvaliablequantity">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="WarehouseModel.WarehouseDetails_Result">
-          <ScalarProperty Name="Warehouse_Name" ColumnName="Warehouse Name" />
-          <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+        <ComplexTypeMapping TypeName="WarehouseModel.showstoreproductsAvaliablequantity_Result">
+          <ScalarProperty Name="Warhouse_Name" ColumnName="Warhouse_Name" />
+          <ScalarProperty Name="product" ColumnName="product" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="person" ColumnName="person" />
-          <ScalarProperty Name="Permission_Date" ColumnName="Permission Date" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="production_Date" ColumnName="production_Date" />
+          <ScalarProperty Name="Expire" ColumnName="Expire" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="productWarehouse" FunctionName="WarehouseModel.Store.productWarehouse">
+    <FunctionImportMapping FunctionImportName="showstoreproductsAvaliablequantity2" FunctionName="WarehouseModel.Store.showstoreproductsAvaliablequantity2">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="WarehouseModel.productWarehouse_Result">
-          <ScalarProperty Name="Warehouse_Name" ColumnName="Warehouse Name" />
-          <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+        <ComplexTypeMapping TypeName="WarehouseModel.showstoreproductsAvaliablequantity2_Result">
+          <ScalarProperty Name="Warhouse_Name" ColumnName="Warhouse_Name" />
+          <ScalarProperty Name="product" ColumnName="product" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="production_Date" ColumnName="production_Date" />
+          <ScalarProperty Name="Expire" ColumnName="Expire" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="showstoresss" FunctionName="WarehouseModel.Store.showstoresss">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WarehouseModel.showstoresss_Result">
+          <ScalarProperty Name="Warhouse_Id" ColumnName="Warhouse_Id" />
+          <ScalarProperty Name="Warhouse_Name" ColumnName="Warhouse_Name" />
+          <ScalarProperty Name="Warhouse_Address" ColumnName="Warhouse_Address" />
+          <ScalarProperty Name="Warhouse_Managers" ColumnName="Warhouse_Managers" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WarehouseDetails" FunctionName="WarehouseModel.Store.WarehouseDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WarehouseModel.WarehouseDetails_Result">
+          <ScalarProperty Name="WarehouseName" ColumnName="WarehouseName" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="person" ColumnName="person" />
-          <ScalarProperty Name="Permission_Date" ColumnName="Permission Date" />
+          <ScalarProperty Name="PermissionDate" ColumnName="PermissionDate" />
           <ScalarProperty Name="Type" ColumnName="Type" />
         </ComplexTypeMapping>
       </ResultMapping>

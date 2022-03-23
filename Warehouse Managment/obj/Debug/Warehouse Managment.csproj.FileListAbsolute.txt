@@ -127,3 +127,4 @@ C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse M
 C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\ibrah\Source\Repos\ibrahim21399\Warehouse-Managment-System-\Warehouse Managment\obj\Debug\Warehouse_Managment.Warehousess.productQuntity.resources

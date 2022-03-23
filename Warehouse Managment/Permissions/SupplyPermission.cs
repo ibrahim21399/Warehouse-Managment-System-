@@ -17,8 +17,6 @@ namespace Warehouse_Managment.Permissions
         int id;
         int pid;
         public bool TextWasChanged = false;
-        int counter =0;
-
 
         public SupplyPermission()
         {

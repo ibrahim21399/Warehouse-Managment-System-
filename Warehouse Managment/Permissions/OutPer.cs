@@ -17,11 +17,23 @@ namespace Warehouse_Managment.Permissions
         int id;
         int pid;
         int newQ;
+        bool check;
         public OutPer()
         {
             InitializeComponent();
+                
 
             db = new WarehouseEntities();
+            var perno = (from d in db.CusPermissions select d.prem_Num);
+            if (perno.Count() > 0)
+            {
+                int h = perno.Count() + 1;
+                textBox1.Text = h.ToString();
+            }
+            else
+            {
+                textBox1.Text = "1";
+            }
             var stores = from d in db.Warehouses
                          select d.Warhouse_Name;
             foreach (var dd in stores)
@@ -60,6 +72,7 @@ namespace Warehouse_Managment.Permissions
             {
                 comboBox4.Items.Add(dd);
             }
+            
             dataGridView1.DataSource = db.Show_Cus_Permission().ToList();
 
         }
@@ -114,7 +127,7 @@ namespace Warehouse_Managment.Permissions
                         sup.Quantity = newQ;
                         db.Cus_Requst_Detailes.Add(newproduct);
                         db.SaveChanges();
-                        MessageBox.Show("per aDded first item added");
+                        MessageBox.Show("First item added");
                         dataGridView1.DataSource = db.Show_Cus_Permission().ToList();
                     }
                     else
@@ -147,21 +160,36 @@ namespace Warehouse_Managment.Permissions
                     {
                         newproduct.Prod_Id = dd;
                     }
-                    var sup = db.product_Store.SingleOrDefault(X => X.prd_Id == newproduct.Prod_Id && X.War_Id == newproduct.War_Id);
-                    if (sup.Quantity >= newproduct.OQuntity)
+                    string selectedproduct = comboBox2.SelectedItem.ToString();
+                    var it = (from d in db.product_Store where d.Product.prod_Name == selectedproduct select d);
+                    if (it.Count() > 0)
                     {
-                        newQ = (int)(sup.Quantity - newproduct.OQuntity);
-                        sup.Quantity = newQ;
-                        db.CusPermissions.Add(perm);
-                        db.Cus_Requst_Detailes.Add(newproduct);
-                        db.SaveChanges();
-                        MessageBox.Show("per added first item added");
-                        dataGridView1.DataSource = db.Show_Cus_Permission().ToList();
+                        check = true;
+                    }
+
+                    var sup = db.product_Store.SingleOrDefault(X => X.prd_Id == newproduct.Prod_Id && X.War_Id == newproduct.War_Id);
+                    if (check == true)
+                    {
+                        if (sup.Quantity >= newproduct.OQuntity)
+                        {
+                            newQ = (int)(sup.Quantity - newproduct.OQuntity);
+                            sup.Quantity = newQ;
+                            db.CusPermissions.Add(perm);
+                            db.Cus_Requst_Detailes.Add(newproduct);
+                            db.SaveChanges();
+                            MessageBox.Show(" item added");
+                            dataGridView1.DataSource = db.Show_Cus_Permission().ToList();
+                        }
+                        else
+                        {
+                            MessageBox.Show("store has only " + sup.Quantity.ToString());
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("store has only " + sup.Quantity.ToString());
+                        MessageBox.Show("product isn't avilable Now");
                     }
+
 
                 }
             }

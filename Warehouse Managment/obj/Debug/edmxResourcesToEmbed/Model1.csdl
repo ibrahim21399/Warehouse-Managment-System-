@@ -339,20 +339,28 @@
       <Parameter Name="date2" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="productDuration" ReturnType="Collection(WarehouseModel.productDuration_Result)" />
+    <FunctionImport Name="productMovement" ReturnType="Collection(WarehouseModel.productMovement_Result)">
+      <Parameter Name="w_name" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="productsMove" ReturnType="Collection(WarehouseModel.productsMove_Result)">
       <Parameter Name="warid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="productWarehouse" ReturnType="Collection(WarehouseModel.productWarehouse_Result)">
+      <Parameter Name="prdnsme" Mode="In" Type="String" />
+      <Parameter Name="w_name" Mode="In" Type="String" />
+      <Parameter Name="date1" Mode="In" Type="DateTime" />
+      <Parameter Name="date2" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="Show_Cus_Permission" ReturnType="Collection(WarehouseModel.Show_Cus_Permission_Result)" />
     <FunctionImport Name="show_Products" ReturnType="Collection(WarehouseModel.show_Products_Result)" />
     <FunctionImport Name="show_productsStoresQuentity" ReturnType="Collection(WarehouseModel.show_productsStoresQuentity_Result)" />
     <FunctionImport Name="Show_Sup_Permission" ReturnType="Collection(WarehouseModel.Show_Sup_Permission_Result)" />
-    <FunctionImport Name="WarehouseDetails" ReturnType="Collection(WarehouseModel.WarehouseDetails_Result)">
-      <Parameter Name="w_name" Mode="In" Type="String" />
-      <Parameter Name="date1" Mode="In" Type="DateTime" />
-      <Parameter Name="date2" Mode="In" Type="DateTime" />
+    <FunctionImport Name="showstoreproductsAvaliablequantity" ReturnType="Collection(WarehouseModel.showstoreproductsAvaliablequantity_Result)">
+      <Parameter Name="ware" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="productWarehouse" ReturnType="Collection(WarehouseModel.productWarehouse_Result)">
-      <Parameter Name="prdnsme" Mode="In" Type="String" />
+    <FunctionImport Name="showstoreproductsAvaliablequantity2" ReturnType="Collection(WarehouseModel.showstoreproductsAvaliablequantity2_Result)" />
+    <FunctionImport Name="showstoresss" ReturnType="Collection(WarehouseModel.showstoresss_Result)" />
+    <FunctionImport Name="WarehouseDetails" ReturnType="Collection(WarehouseModel.WarehouseDetails_Result)">
       <Parameter Name="w_name" Mode="In" Type="String" />
       <Parameter Name="date1" Mode="In" Type="DateTime" />
       <Parameter Name="date2" Mode="In" Type="DateTime" />
@@ -361,8 +369,8 @@
   <ComplexType Name="expired_Result">
     <Property Type="Int32" Name="Code" Nullable="true" />
     <Property Type="String" Name="product" Nullable="false" MaxLength="50" />
-    <Property Type="DateTime" Name="Production_Date" Nullable="true" />
-    <Property Type="DateTime" Name="Expire_Date" Nullable="true" />
+    <Property Type="DateTime" Name="ProductionDate" Nullable="true" />
+    <Property Type="DateTime" Name="ExpireDate" Nullable="true" />
     <Property Type="Int32" Name="Expiry" Nullable="true" />
   </ComplexType>
   <ComplexType Name="expiredItems_Result">
@@ -383,17 +391,34 @@
   <ComplexType Name="productDuration_Result">
     <Property Type="Int32" Name="Code" Nullable="true" />
     <Property Type="String" Name="product" Nullable="false" MaxLength="50" />
-    <Property Type="DateTime" Name="Production_Date" Nullable="true" />
-    <Property Type="DateTime" Name="Expire_Date" Nullable="true" />
-    <Property Type="Int32" Name="Number_of_Months_in_warehouse" Nullable="true" />
+    <Property Type="DateTime" Name="ProductionDate" Nullable="true" />
+    <Property Type="DateTime" Name="ExpireDate" Nullable="true" />
+    <Property Type="Int32" Name="NumberOfDaysInWarehouse" Nullable="true" />
   </ComplexType>
-  <ComplexType Name="productsMove_Result">
-    <Property Type="String" Name="Product_Name" Nullable="true" MaxLength="50" />
+  <ComplexType Name="productMovement_Result">
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
     <Property Type="Int32" Name="Quantity" Nullable="true" />
     <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
-    <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
+    <Property Type="DateTime" Name="PermissionDate" Nullable="true" />
     <Property Type="String" Name="From" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="TO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="18" />
+  </ComplexType>
+  <ComplexType Name="productsMove_Result">
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="PermissionDate" Nullable="true" />
+    <Property Type="String" Name="From" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="productWarehouse_Result">
+    <Property Type="String" Name="WarehouseName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ProductName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="PermissionDate" Nullable="true" />
     <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
   </ComplexType>
   <ComplexType Name="Show_Cus_Permission_Result">
@@ -430,20 +455,34 @@
     <Property Type="DateTime" Name="Expire" Nullable="true" />
     <Property Type="DateTime" Name="PermissionDate" Nullable="true" />
   </ComplexType>
-  <ComplexType Name="WarehouseDetails_Result">
-    <Property Type="String" Name="Warehouse_Name" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Product_Name" Nullable="false" MaxLength="50" />
+  <ComplexType Name="showstoreproductsAvaliablequantity_Result">
+    <Property Type="String" Name="Warhouse_Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="product" Nullable="false" MaxLength="50" />
     <Property Type="Int32" Name="Quantity" Nullable="true" />
-    <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
-    <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
-    <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Supplier" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="production_Date" Nullable="true" />
+    <Property Type="DateTime" Name="Expire" Nullable="true" />
   </ComplexType>
-  <ComplexType Name="productWarehouse_Result">
-    <Property Type="String" Name="Warehouse_Name" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Product_Name" Nullable="false" MaxLength="50" />
+  <ComplexType Name="showstoreproductsAvaliablequantity2_Result">
+    <Property Type="String" Name="Warhouse_Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="product" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+    <Property Type="String" Name="Supplier" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="production_Date" Nullable="true" />
+    <Property Type="DateTime" Name="Expire" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="showstoresss_Result">
+    <Property Type="Int32" Name="Warhouse_Id" Nullable="false" />
+    <Property Type="String" Name="Warhouse_Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Warhouse_Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Warhouse_Managers" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="WarehouseDetails_Result">
+    <Property Type="String" Name="WarehouseName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ProductName" Nullable="false" MaxLength="50" />
     <Property Type="Int32" Name="Quantity" Nullable="true" />
     <Property Type="String" Name="person" Nullable="true" MaxLength="50" />
-    <Property Type="DateTime" Name="Permission_Date" Nullable="true" />
+    <Property Type="DateTime" Name="PermissionDate" Nullable="true" />
     <Property Type="String" Name="Type" Nullable="true" MaxLength="20" />
   </ComplexType>
 </Schema>

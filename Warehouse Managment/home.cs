@@ -168,5 +168,11 @@ namespace Warehouse_Managment
             SupplyPermission t = new SupplyPermission();
             t.Show();
         }
+
+        private void WarhouseProductsQuntityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            productQuntity pQ = new productQuntity();
+            pQ.Show();
+        }
     }
 }

@@ -13,10 +13,10 @@ namespace Warehouse_Managment
     
     public partial class productsMove_Result
     {
-        public string Product_Name { get; set; }
+        public string ProductName { get; set; }
         public Nullable<int> Quantity { get; set; }
         public string person { get; set; }
-        public Nullable<System.DateTime> Permission_Date { get; set; }
+        public Nullable<System.DateTime> PermissionDate { get; set; }
         public string From { get; set; }
         public string TO { get; set; }
         public string Type { get; set; }

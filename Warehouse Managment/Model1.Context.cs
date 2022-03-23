@@ -104,6 +104,15 @@ namespace Warehouse_Managment
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productDuration_Result>("productDuration");
         }
     
+        public virtual ObjectResult<productMovement_Result> productMovement(string w_name)
+        {
+            var w_nameParameter = w_name != null ?
+                new ObjectParameter("w_name", w_name) :
+                new ObjectParameter("w_name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productMovement_Result>("productMovement", w_nameParameter);
+        }
+    
         public virtual ObjectResult<productsMove_Result> productsMove(Nullable<int> warid)
         {
             var waridParameter = warid.HasValue ?
@@ -111,43 +120,6 @@ namespace Warehouse_Managment
                 new ObjectParameter("warid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productsMove_Result>("productsMove", waridParameter);
-        }
-    
-        public virtual ObjectResult<Show_Cus_Permission_Result> Show_Cus_Permission()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Show_Cus_Permission_Result>("Show_Cus_Permission");
-        }
-    
-        public virtual ObjectResult<show_Products_Result> show_Products()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<show_Products_Result>("show_Products");
-        }
-    
-        public virtual ObjectResult<show_productsStoresQuentity_Result> show_productsStoresQuentity()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<show_productsStoresQuentity_Result>("show_productsStoresQuentity");
-        }
-    
-        public virtual ObjectResult<Show_Sup_Permission_Result> Show_Sup_Permission()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Show_Sup_Permission_Result>("Show_Sup_Permission");
-        }
-    
-        public virtual ObjectResult<WarehouseDetails_Result> WarehouseDetails(string w_name, Nullable<System.DateTime> date1, Nullable<System.DateTime> date2)
-        {
-            var w_nameParameter = w_name != null ?
-                new ObjectParameter("w_name", w_name) :
-                new ObjectParameter("w_name", typeof(string));
-    
-            var date1Parameter = date1.HasValue ?
-                new ObjectParameter("date1", date1) :
-                new ObjectParameter("date1", typeof(System.DateTime));
-    
-            var date2Parameter = date2.HasValue ?
-                new ObjectParameter("date2", date2) :
-                new ObjectParameter("date2", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WarehouseDetails_Result>("WarehouseDetails", w_nameParameter, date1Parameter, date2Parameter);
         }
     
         public virtual ObjectResult<productWarehouse_Result> productWarehouse(string prdnsme, string w_name, Nullable<System.DateTime> date1, Nullable<System.DateTime> date2)
@@ -171,9 +143,60 @@ namespace Warehouse_Managment
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productWarehouse_Result>("productWarehouse", prdnsmeParameter, w_nameParameter, date1Parameter, date2Parameter);
         }
     
+        public virtual ObjectResult<Show_Cus_Permission_Result> Show_Cus_Permission()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Show_Cus_Permission_Result>("Show_Cus_Permission");
+        }
+    
+        public virtual ObjectResult<show_Products_Result> show_Products()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<show_Products_Result>("show_Products");
+        }
+    
+        public virtual ObjectResult<show_productsStoresQuentity_Result> show_productsStoresQuentity()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<show_productsStoresQuentity_Result>("show_productsStoresQuentity");
+        }
+    
+        public virtual ObjectResult<Show_Sup_Permission_Result> Show_Sup_Permission()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Show_Sup_Permission_Result>("Show_Sup_Permission");
+        }
+    
+        public virtual ObjectResult<showstoreproductsAvaliablequantity_Result> showstoreproductsAvaliablequantity(string ware)
+        {
+            var wareParameter = ware != null ?
+                new ObjectParameter("ware", ware) :
+                new ObjectParameter("ware", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<showstoreproductsAvaliablequantity_Result>("showstoreproductsAvaliablequantity", wareParameter);
+        }
+    
+        public virtual ObjectResult<showstoreproductsAvaliablequantity2_Result> showstoreproductsAvaliablequantity2()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<showstoreproductsAvaliablequantity2_Result>("showstoreproductsAvaliablequantity2");
+        }
+    
         public virtual ObjectResult<showstoresss_Result> showstoresss()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<showstoresss_Result>("showstoresss");
+        }
+    
+        public virtual ObjectResult<WarehouseDetails_Result> WarehouseDetails(string w_name, Nullable<System.DateTime> date1, Nullable<System.DateTime> date2)
+        {
+            var w_nameParameter = w_name != null ?
+                new ObjectParameter("w_name", w_name) :
+                new ObjectParameter("w_name", typeof(string));
+    
+            var date1Parameter = date1.HasValue ?
+                new ObjectParameter("date1", date1) :
+                new ObjectParameter("date1", typeof(System.DateTime));
+    
+            var date2Parameter = date2.HasValue ?
+                new ObjectParameter("date2", date2) :
+                new ObjectParameter("date2", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WarehouseDetails_Result>("WarehouseDetails", w_nameParameter, date1Parameter, date2Parameter);
         }
     }
 }

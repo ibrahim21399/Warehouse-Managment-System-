@@ -76,19 +76,33 @@ namespace Warehouse_Managment
             }
 
             s = string.Join(",",strs);
+            if (comboBox3.Text!=string.Empty)
+            {
+                this.DataTable1TableAdapter.Fill(this.DataSet2.DataTable1, dateTimePicker4.Value.ToString(), dateTimePicker3.Value.ToString(), comboBox3.SelectedItem.ToString(), s);
 
-            this.DataTable1TableAdapter.Fill(this.DataSet2.DataTable1,dateTimePicker4.Value.ToString(), dateTimePicker3.Value.ToString(), comboBox3.SelectedItem.ToString(), s);
 
+                this.reportViewer2.RefreshReport();
+            }
+            else
+            {
+                MessageBox.Show("select Items");
+            }
 
-            this.reportViewer2.RefreshReport();
 
 
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            this.expiredTableAdapter.Fill(this.WarehouseDataSet7.expired,int.Parse(textBox1.Text));
-            this.reportViewer5.RefreshReport();
+            if (textBox1.Text!=string.Empty)
+            {
+                this.expiredTableAdapter.Fill(this.WarehouseDataSet7.expired, int.Parse(textBox1.Text));
+                this.reportViewer5.RefreshReport();
+            }
+            else
+            {
+                MessageBox.Show("insert days");
+            }
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)

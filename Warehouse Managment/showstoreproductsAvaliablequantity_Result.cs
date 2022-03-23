@@ -11,12 +11,13 @@ namespace Warehouse_Managment
 {
     using System;
     
-    public partial class expired_Result
+    public partial class showstoreproductsAvaliablequantity_Result
     {
-        public Nullable<int> Code { get; set; }
+        public string Warhouse_Name { get; set; }
         public string product { get; set; }
-        public Nullable<System.DateTime> ProductionDate { get; set; }
-        public Nullable<System.DateTime> ExpireDate { get; set; }
-        public Nullable<int> Expiry { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public string Supplier { get; set; }
+        public Nullable<System.DateTime> production_Date { get; set; }
+        public Nullable<System.DateTime> Expire { get; set; }
     }
 }

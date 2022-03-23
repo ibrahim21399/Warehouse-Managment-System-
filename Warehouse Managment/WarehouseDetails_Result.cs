@@ -13,11 +13,11 @@ namespace Warehouse_Managment
     
     public partial class WarehouseDetails_Result
     {
-        public string Warehouse_Name { get; set; }
-        public string Product_Name { get; set; }
+        public string WarehouseName { get; set; }
+        public string ProductName { get; set; }
         public Nullable<int> Quantity { get; set; }
         public string person { get; set; }
-        public Nullable<System.DateTime> Permission_Date { get; set; }
+        public Nullable<System.DateTime> PermissionDate { get; set; }
         public string Type { get; set; }
     }
 }

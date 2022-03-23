@@ -83,6 +83,16 @@ namespace Warehouse_Managment.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap box1 {
+            get {
+                object obj = ResourceManager.GetObject("box1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap checklist_icon_checklist_icon_png_list_icon_7 {
             get {
                 object obj = ResourceManager.GetObject("checklist-icon-checklist-icon-png-list-icon-7", resourceCulture);

@@ -12,10 +12,14 @@ namespace Warehouse_Managment.Products
 {
     public partial class AddProducts : Form
     {
-        
+
+        WarehouseEntities db = new WarehouseEntities();
         public AddProducts()
         {
             InitializeComponent();
+            
+
+               
         }
 
         private void Label5_Click(object sender, EventArgs e)
@@ -24,14 +28,22 @@ namespace Warehouse_Managment.Products
         }
 
         private void Button1_Click(object sender, EventArgs e)
-        {
+
+        { 
+            int hh = int.Parse(textBox1.Text);
+            var pcode = (from d in db.Products where d.Prod_Code ==hh select d);
+
             if (textBox1.Text ==string.Empty | textBox2.Text == string.Empty | textBox3.Text ==string.Empty)
             {
                 MessageBox.Show("please fill product Data");
             }
+            else if(pcode.Count()>0)
+            {
+                MessageBox.Show("this code already taken by other product");
+            }
             else
             {
-                WarehouseEntities db = new WarehouseEntities();
+               
                 //Product p = new Product();
                 //p.Prod_Code =int.Parse( textBox1.Text);
                 //p.prod_Name = textBox2.Text;

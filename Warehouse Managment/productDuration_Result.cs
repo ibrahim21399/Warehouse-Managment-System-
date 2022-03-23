@@ -15,8 +15,8 @@ namespace Warehouse_Managment
     {
         public Nullable<int> Code { get; set; }
         public string product { get; set; }
-        public Nullable<System.DateTime> Production_Date { get; set; }
-        public Nullable<System.DateTime> Expire_Date { get; set; }
-        public Nullable<int> Number_of_Months_in_warehouse { get; set; }
+        public Nullable<System.DateTime> ProductionDate { get; set; }
+        public Nullable<System.DateTime> ExpireDate { get; set; }
+        public Nullable<int> NumberOfDaysInWarehouse { get; set; }
     }
 }

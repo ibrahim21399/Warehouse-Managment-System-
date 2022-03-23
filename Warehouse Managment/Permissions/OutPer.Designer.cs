@@ -92,7 +92,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(965, 186);
+            this.tabPage2.Size = new System.Drawing.Size(965, 201);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Edit Permission";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -245,7 +245,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(777, 160);
+            this.button3.Location = new System.Drawing.Point(777, 152);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(172, 43);
             this.button3.TabIndex = 70;
@@ -343,11 +343,11 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 284);
+            this.dataGridView1.Location = new System.Drawing.Point(8, 303);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(973, 330);
+            this.dataGridView1.Size = new System.Drawing.Size(973, 311);
             this.dataGridView1.TabIndex = 89;
             // 
             // label5
@@ -398,6 +398,7 @@
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(243, 15);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(197, 38);
             this.textBox1.TabIndex = 85;
             // 
@@ -408,7 +409,7 @@
             this.tabControl1.Location = new System.Drawing.Point(8, 67);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(973, 215);
+            this.tabControl1.Size = new System.Drawing.Size(973, 230);
             this.tabControl1.TabIndex = 91;
             // 
             // ADD
@@ -431,7 +432,7 @@
             this.ADD.Location = new System.Drawing.Point(4, 25);
             this.ADD.Name = "ADD";
             this.ADD.Padding = new System.Windows.Forms.Padding(3);
-            this.ADD.Size = new System.Drawing.Size(965, 186);
+            this.ADD.Size = new System.Drawing.Size(965, 201);
             this.ADD.TabIndex = 0;
             this.ADD.Text = "Add Permission";
             // 
