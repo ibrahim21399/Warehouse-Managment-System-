@@ -16,6 +16,7 @@ namespace Warehouse_Managment.Permissions
         int x;
         int id;
         int pid;
+        string s;
         public bool TextWasChanged = false;
 
         public SupplyPermission()
@@ -60,12 +61,7 @@ namespace Warehouse_Managment.Permissions
             {
                 comboBox6.Items.Add(dd);
             }
-            var Productss = from d in db.Products
-                           select d.prod_Name;
-            foreach (var dd in Products)
-            {
-                comboBox5.Items.Add(dd);
-            }
+
             var supp = from d in db.suppliers
                       select d.Sup_Name;
             foreach (var dd in sup)
@@ -210,9 +206,15 @@ namespace Warehouse_Managment.Permissions
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            string s = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            s = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            dateTimePicker7.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString();
+            comboBox4.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            textBox4.Text= dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            dateTimePicker6.Text= dataGridView1.CurrentRow.Cells[6].Value.ToString();
+            dateTimePicker5.Text= dataGridView1.CurrentRow.Cells[7].Value.ToString();
             //pid = (from d in db.Products where d.prod_Name == s select d.prod_Id).First();
             textBox3.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+
 
         }
 
@@ -221,9 +223,9 @@ namespace Warehouse_Managment.Permissions
             var sup = db.SupPermissions.SingleOrDefault(X => X.prem_Num == id);
             sup.supplier.Sup_Name = comboBox4.SelectedItem.ToString();
             sup.Prem_Date =dateTimePicker7.Value;
-            var supp = db.Sup_Requst_Detailes.SingleOrDefault(X => X.perem_Num == id);
+            var supp = db.Sup_Requst_Detailes.SingleOrDefault(X => X.perem_Num == id&& X.Product.prod_Name==s);
             supp.IQuntity = int.Parse(textBox2.Text);
-            supp.Product.prod_Name = comboBox5.SelectedItem.ToString();
+            supp.Product.prod_Name = textBox4.Text;
             supp.Warehouse.Warhouse_Name = comboBox6.SelectedItem.ToString();
             supp.production_Date = dateTimePicker6.Value;
             supp.Expire = dateTimePicker5.Value;
@@ -234,18 +236,20 @@ namespace Warehouse_Managment.Permissions
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            var result = db.Sup_Requst_Detailes.Find(id);
-            db.Sup_Requst_Detailes.Remove(result);
-            db.SaveChanges();
-            var result2 = db.SupPermissions.Find(id);
-            db.SupPermissions.Remove(result2);
-            db.SaveChanges();
+        //    var result = db.Sup_Requst_Detailes.Find(id);
+        //    db.Sup_Requst_Detailes.Remove(result);
+        //    db.SaveChanges();
+        //    var result2 = db.SupPermissions.Find(id);
+        //    db.SupPermissions.Remove(result2);
+        //    db.SaveChanges();
 
-            dataGridView1.DataSource = db.Show_Sup_Permission().ToList();
-            MessageBox.Show("deleted");
+        //    dataGridView1.DataSource = db.Show_Sup_Permission().ToList();
+        //    MessageBox.Show("deleted");
         }
 
-        private void Label5_Click(object sender, EventArgs e)
+
+
+        private void Label5_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }

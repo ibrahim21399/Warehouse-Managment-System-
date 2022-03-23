@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="746dd605584f47538c87f5959d836e72" Name="Diagram1">
-        <EntityTypeShape EntityType="WarehouseModel.Cus_Requst_Detailes" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Cus_Requst_Detailes" Width="2.375" PointX="3" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="WarehouseModel.CusPermission" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="WarehouseModel.Customer" Width="1.5" PointX="1.5" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WarehouseModel.Product" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />

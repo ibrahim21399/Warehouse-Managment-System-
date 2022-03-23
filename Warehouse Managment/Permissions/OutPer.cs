@@ -15,9 +15,9 @@ namespace Warehouse_Managment.Permissions
         WarehouseEntities db;
         int x;
         int id;
-        int pid;
         int newQ;
         bool check;
+        string s;
         public OutPer()
         {
             InitializeComponent();
@@ -60,12 +60,7 @@ namespace Warehouse_Managment.Permissions
             {
                 comboBox6.Items.Add(dd);
             }
-            var Productss = from d in db.Products
-                            select d.prod_Name;
-            foreach (var dd in Products)
-            {
-                comboBox5.Items.Add(dd);
-            }
+
             var supp = from d in db.Customers
                        select d.Cus_Name;
             foreach (var dd in sup)
@@ -168,7 +163,7 @@ namespace Warehouse_Managment.Permissions
                     }
 
                     var sup = db.product_Store.SingleOrDefault(X => X.prd_Id == newproduct.Prod_Id && X.War_Id == newproduct.War_Id);
-                    if (check == true)
+                    if (check == true&&sup !=null)
                     {
                         if (sup.Quantity >= newproduct.OQuntity)
                         {
@@ -193,6 +188,34 @@ namespace Warehouse_Managment.Permissions
 
                 }
             }
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            var sup = db.CusPermissions.SingleOrDefault(X => X.prem_Num == id);
+            sup.Customer.Cus_Name = comboBox4.SelectedItem.ToString();
+            sup.Prem_Date = dateTimePicker7.Value;
+            var supp = db.Cus_Requst_Detailes.SingleOrDefault(X => X.perem_Num == id && X.Product.prod_Name == s);
+            supp.OQuntity = int.Parse(textBox2.Text);
+            supp.Product.prod_Name = textBox4.Text;
+            supp.Warehouse.Warhouse_Name = comboBox6.SelectedItem.ToString();
+            db.SaveChanges();
+            dataGridView1.DataSource = db.Show_Cus_Permission().ToList();
+            MessageBox.Show("permission updated");
+        }
+
+        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            s = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            dateTimePicker7.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+            comboBox4.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            textBox4.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            comboBox6.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            //dateTimePicker6.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+            //dateTimePicker5.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
+            //pid = (from d in db.Products where d.prod_Name == s select d.prod_Id).First();
+            textBox3.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
         }
     }
 }
